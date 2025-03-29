@@ -14,22 +14,22 @@ notion_api_url = "https://api.notion.com/v1/pages"
 database_id = "1c252a10951580368a9ecfcb5e648d61"
 notion_secret = "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"
 
-def preprocess_image(img):
-    gray = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2GRAY)
-    _, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-    return thresh
+# def preprocess_image(img):
+#     gray = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2GRAY)
+#     _, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+#     return thresh
 
 if uploaded_file:
     if st.button("読込"):
         with st.spinner("OCR処理中..."):
-            full_text = ""
+            full_text = "テスト"
 
-            with pdfplumber.open(uploaded_file) as pdf:
-                for page in pdf.pages:
-                    img = page.to_image(resolution=300).original
-                    processed_img = preprocess_image(img)
-                    text = pytesseract.image_to_string(processed_img, lang="jpn", config="--oem 3 --psm 6")
-                    full_text += text
+            # with pdfplumber.open(uploaded_file) as pdf:
+            #     for page in pdf.pages:
+            #         img = page.to_image(resolution=300).original
+            #         processed_img = preprocess_image(img)
+            #         text = pytesseract.image_to_string(processed_img, lang="jpn", config="--oem 3 --psm 6")
+            #         full_text += text
 
             test_dict = {
                 "name": "テスト太郎",
